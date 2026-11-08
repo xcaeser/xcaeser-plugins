@@ -36,6 +36,10 @@ Then wait for the reports and Integrate.
 
 Need to edit a file outside your scope: stop editing and report.
 
+## New work mid-change (whole change only)
+
+A user message that arrives while you build and asks for unrelated work (it builds on nothing in your scope) goes to its own session, so neither waits: `mcp__ccd_session__start_session` with `initiation: user_asked`, `context: fresh`, `use_worktree: false`, a `name`, and a prompt of "invoke the `x:work` skill", the goal, the files it owns, your scope's files it must not touch, and the proof. Say so in one line and keep building. A correction or follow-up to your change stays in your scope. Without `start_session`, finish and commit your scope first, then take the new work.
+
 ## Integrate (lead, after a split)
 
 Read each unit's diff and run its proof. Then make the shared-file and glue edits through Build, with the whole change's proof, and an audit scoped to the seams: the integration diff and where the units' diffs meet.
