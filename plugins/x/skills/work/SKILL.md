@@ -10,7 +10,7 @@ Your scope is the whole change. If your prompt says "you are a split unit", your
 
 ## Think (any scope, any time)
 
-Call `x:Fable-thinker` when two or more shapes are plausible and the code does not settle which, when a finding breaks the direction, before choosing a design that ripples across files or a public API, before drawing split seams, or when two attempts have failed. Skip it when reading code or running something answers the question; say in one line which you did. Each consult carries one question, the files that matter and what you have learned. Its answer is input, not orders.
+Call `x:Fable-thinker` at the start of a new feature, when the user asks which option is better or how to do something, when two or more shapes are plausible and the code does not settle which, when a finding breaks the direction, before choosing a design that ripples across files or a public API, before drawing split seams, or when two attempts have failed. Skip it when reading code or running something answers the question; say in one line which you did. Each consult carries one question, the files that matter and what you have learned. Its answer is input, not orders: its judge becomes the proof, and the forks it leaves open are the only questions for the user.
 
 ## Split (whole change only)
 
@@ -27,7 +27,7 @@ Then wait for the reports and Integrate.
 
 `x:Sonnet-worker` writes every edit, audit fixes included, except an edit of one file under about 20 lines, which you write yourself.
 
-1. Read the code; before any logic, name the data shape and every place the change must reach: callers, tests, fixtures, config, exports. That list is the owned files.
+1. Read every file the change affects and design as if its requirement had been there from the start, not bolted on. Before any logic, name the data shape and every place the change must reach: callers, types, tests, fixtures, config, exports, docs and examples. That list is the owned files.
 2. One worker per independent piece, all in one message; files that import each other or share a shape are one piece. Brief: goal, owned files, files it must not touch, data shape, proof.
 3. Read the diffs, not the summaries; send back anything outside the brief.
 4. Run the proof on the real flow. Inconclusive is a fail.
