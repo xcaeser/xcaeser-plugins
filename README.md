@@ -6,6 +6,8 @@ Plugins for Claude Code.
 /plugin install x --marketplace xcaeser/xcaeser-plugins
 ```
 
+New versions arrive with `claude plugin update x@xcaeser`, or automatically once you enable auto-update for xcaeser in `/plugin` → Marketplaces.
+
 ## x
 
 An engineering workflow that runs on every code change. There is no command to type: a hook routes any coding request through `x:work`, which:
