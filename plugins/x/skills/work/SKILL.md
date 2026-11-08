@@ -12,7 +12,7 @@ Consult `x:Fable-thinker` at the start of a feature (its seams feed Split), when
 
 Split when all hold, otherwise build directly: `mcp__ccd_session__start_session` exists (Claude desktop app); two or more units; disjoint owned files; each unit's proof runs without the others or Integrate; each is a feature in itself, with its own design and audit, not a piece a worker could take. Files several units need (lockfiles, route indexes, barrels) belong to Integrate.
 
-1. Units inherit your model and effort and cannot exceed them. If you are not on Opus at high effort, ask the user to switch in the model menu and stop.
+1. Units inherit your model and effort and cannot exceed them. Below Opus, or below high effort, ask the user to switch in the model menu or to have you build directly, and stop.
 2. Show the units once: goal, owned files, proof each. The user's yes covers the whole run.
 3. In one message, one `start_session` per unit: `initiation: user_asked`, `context: fresh`, `use_worktree: false`, `title`, `name`, `background` (the whole change, the design, how this unit fits; at least 80 characters), `prompt`: "invoke the `x:work` skill as a split unit (Build only)", the goal, the design excerpt, owned files, files it must not touch, the proof.
 
@@ -23,14 +23,15 @@ End your turn; the app continues you when the units finish. Then Integrate.
 `x:Sonnet-worker` writes every edit, audit fixes included, except an edit of one file under about 20 lines, which you write yourself.
 
 1. Read every file the change affects and design as if its requirement had been there from the start. Before any logic, name the data shape and every place the change must reach: callers, types, tests, fixtures, config, exports, docs and examples. That list is the owned files.
-2. One worker per independent piece, all in one message; files that import each other or share a shape are one piece. Brief: goal, owned files, files it must not touch, data shape, proof.
-3. Read the diffs, not the summaries; send back anything outside the brief.
-4. Run the proof on the real flow. Inconclusive is a fail.
-5. If speed is the goal or the diff sits on a hot path (the primary action, a loop over user data, queries, I/O, rendering, startup), run the optimizer on it as `${CLAUDE_SKILL_DIR}/../optimizer/SKILL.md` says; apply its wins through workers and re-run the proof.
-6. Audit your diff as `${CLAUDE_SKILL_DIR}/../audit/SKILL.md` says. Skip it only when the diff changes nothing but docs, comments, formatting, copy or config values, or is one file under about 20 lines adding no branch, loop, state or I/O and touching no auth, secrets, money, persisted data, async lifecycle, public API or code with several callers; then re-read it, run the proof, and report `audit skipped: <reason>`.
-7. Commit the owned files and report: what changed, the proof and its output, the optimizer's wins if it ran, the audit result. A split unit ends its turn here.
+2. One worker per independent piece; files that import each other or share a shape are one piece. Each brief adds the data shape.
+3. Run the proof on the real flow. Inconclusive is a fail.
+4. If speed is the goal or the diff sits on a hot path (the primary action, a loop over user data, queries, I/O, rendering, startup), run the optimizer on it as `${CLAUDE_SKILL_DIR}/../optimizer/SKILL.md` says; apply its wins through workers and re-run the proof.
+5. Audit your diff as `${CLAUDE_SKILL_DIR}/../audit/SKILL.md` says, except in two cases, where you re-read it, run the proof and report `audit skipped: <reason>`: the diff changes nothing but docs, comments, formatting, copy or config values; or it is an edit you wrote yourself that adds no branch, loop, state or I/O and touches no auth, secrets, money, persisted data, async lifecycle, public API or code with several callers.
+6. Commit the owned files, with no attribution trailer, and report: what changed, the proof and its output, the optimizer's wins if it ran, the audit result. A split unit ends its turn here.
 
 Need to edit a file you do not own: stop editing and report.
+
+A bug you find outside the change: in a whole change, reproduce it, fix it through a worker and commit it alone before yours; a split unit reports it.
 
 ## New work mid-change (whole change only)
 

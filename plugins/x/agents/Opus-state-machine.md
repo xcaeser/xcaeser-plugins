@@ -21,7 +21,7 @@ Sweep schema, server, jobs, client state and UI; `Explore` agents in parallel wh
 
 ## Fix
 
-Each defect whose input sequence you ran goes to an `x:Sonnet-worker` with its smallest fix; fixes that share files are one worker, independent ones go in one message, at most five at once. Brief: the defect and its repro, the smallest fix, owned files, files it must not touch, and the proof: the repro no longer reaches the state and the project's tests pass. Read each fix diff, not the summary, and re-run the proof; send back anything outside the brief.
+Each defect whose input sequence you ran goes to an `x:Sonnet-worker`, briefed with the defect, its repro and the smallest fix; defects that share files are one worker. Its proof: the repro no longer reaches the state and the project's tests pass.
 
 Fix nothing only read, and leave to the user what goes beyond closing a defect: making a whole machine explicit, or a schema change or migration.
 

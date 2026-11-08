@@ -19,7 +19,7 @@ The target is one bug: the one a real user hits on a normal path, keeps hitting,
 
 ## Fix
 
-The winner and every runner-up you reproduced each go to an `x:Sonnet-worker` with its smallest root-cause fix; bugs that share files are one worker, independent ones go in one message, at most five at once. Brief: the bug and its repro, the root cause, the fix with every caller it covers, owned files, files it must not touch, and the proof: the repro no longer fails and the project's tests pass. Read each fix diff, not the summary, and re-run the proof; send back anything outside the brief. Fix nothing only read.
+The winner and every runner-up you reproduced each go to an `x:Sonnet-worker`, briefed with the bug, its repro, the root cause and the fix with every caller it covers; bugs that share files are one worker. Its proof: the repro no longer fails and the project's tests pass. Fix nothing only read.
 
 ## Report
 

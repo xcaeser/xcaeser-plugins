@@ -7,4 +7,4 @@ argument-hint: "[area or symptom to focus on]"
 
 Spawn the `x:Fable-bug-hunter` agent on: $ARGUMENTS
 
-Relay its report in full. Read each fix diff and re-run its proof, then commit each fix on its own, the winner first.
+Relay its report in full. Re-run each fix's proof and check with `git diff --stat` that it stayed in its owned files, then commit each on its own, the winner first, with no attribution trailer.

@@ -7,4 +7,4 @@ argument-hint: "[area, path, diff or metric to optimize]"
 
 Spawn the `x:Fable-optimizer` agent on: $ARGUMENTS
 
-Relay its report in full. Its wins are applied as a code change; its trade-offs go to the user.
+Relay its report in full. Its wins are applied through the `x:work` skill, or through workers when `x:work` ran it; its trade-offs go to the user.

@@ -7,4 +7,4 @@ argument-hint: "[area to focus on]"
 
 Spawn the `x:Opus-state-machine` agent on: $ARGUMENTS
 
-Relay its report in full. Read each fix diff and re-run its proof, then commit each fix on its own. What it left waits until the user picks it.
+Relay its report in full. Re-run each fix's proof and check with `git diff --stat` that it stayed in its owned files, then commit each on its own, with no attribution trailer. What it left waits until the user picks it.
