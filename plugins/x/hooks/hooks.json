@@ -26,11 +26,14 @@
       {
         "matcher": "Edit|Write",
         "hooks": [
-          {
-            "type": "command",
-            "command": "sh",
-            "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/zig-deprecated.sh"]
-          }
+          { "type": "command", "if": "Edit(**/*.zig)", "command": "sh", "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/zig-deprecated.sh"] },
+          { "type": "command", "if": "Edit(**/*.*ts*)", "command": "bun", "args": ["--no-install", "${CLAUDE_PLUGIN_ROOT}/hooks/ts-deprecated.ts"], "timeout": 10 },
+          { "type": "command", "if": "Edit(**/*.rs)", "command": "bun", "args": ["--no-install", "${CLAUDE_PLUGIN_ROOT}/hooks/rust-deprecated.ts"], "timeout": 15 },
+          { "type": "command", "if": "Edit(**/*.go)", "command": "bun", "args": ["--no-install", "${CLAUDE_PLUGIN_ROOT}/hooks/go-deprecated.ts"], "timeout": 15 },
+          { "type": "command", "if": "Write(**/*.zig)", "command": "sh", "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/zig-deprecated.sh"] },
+          { "type": "command", "if": "Write(**/*.*ts*)", "command": "bun", "args": ["--no-install", "${CLAUDE_PLUGIN_ROOT}/hooks/ts-deprecated.ts"], "timeout": 10 },
+          { "type": "command", "if": "Write(**/*.rs)", "command": "bun", "args": ["--no-install", "${CLAUDE_PLUGIN_ROOT}/hooks/rust-deprecated.ts"], "timeout": 15 },
+          { "type": "command", "if": "Write(**/*.go)", "command": "bun", "args": ["--no-install", "${CLAUDE_PLUGIN_ROOT}/hooks/go-deprecated.ts"], "timeout": 15 }
         ]
       }
     ]

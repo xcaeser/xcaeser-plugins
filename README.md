@@ -25,6 +25,7 @@ It also spends fewer tokens, because workers and auditors read the files and onl
 | `/x:audit` | Audit a diff for bugs, quality and a simpler solution, then fix what's confirmed. |
 | `/x:bug-hunter` | Find the deepest, most annoying bug and reproduce it. Read-only. |
 | `/x:state-machine` | Map every implicit state machine: states, transitions, writers, reachable impossible states. Read-only. |
+| `/x:deprecated` | Find every deprecated API use in the repo with the hooks' checks, then fix them all. |
 
 Agents: `x:Fable-thinker`, `x:Opus-auditor`, `x:Sonnet-worker`. They need access to the Fable, Opus and Sonnet models.
 
@@ -32,7 +33,16 @@ The auditor checks the work against your `CLAUDE.md`, so the rules you write the
 
 Split sessions share one checkout, so a hook blocks git commands that would take, discard or sweep in another session's work: `stash`, `reset`, `clean`, restoring the whole tree, and adding or committing everything.
 
-Zig's compiler never warns about deprecated std declarations, so a hook checks every `.zig` file Claude writes against the `Deprecated` doc comments in the installed std and flags the old API, naming the replacement.
+Models write deprecated APIs from memory, and builds let them through, so hooks check the code Claude just wrote in Zig, TypeScript, Rust and Go with the project's own toolchain and flag each old call with the note that names its replacement:
+
+| Language | Asks | Per edit |
+|---|---|---|
+| Zig | The installed std's `Deprecated` doc comments | ~50 ms |
+| TypeScript 7 | The project's compiler, for its deprecation suggestions | 70–300 ms |
+| Rust | `cargo check`, for its `deprecated` lint | ~0.1 s once the crate is built |
+| Go | `gopls check`, for its `deprecated` analyzer | ~0.2 s |
+
+Each hook runs only for its own file type, uses the project's own version (its mise pin or `node_modules`), and stays silent where the toolchain is missing. The TypeScript, Rust and Go hooks run on [bun](https://bun.sh).
 
 ## usage-mod
 
