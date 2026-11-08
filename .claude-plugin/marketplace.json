@@ -3,7 +3,13 @@
   "owner": {
     "name": "xcaeser"
   },
-  "plugins": [],
+  "plugins": [
+    {
+      "name": "x",
+      "source": "./plugins/x",
+      "description": "Engineering workflow for every code change: think, build through workers, mandatory audit."
+    }
+  ],
   "metadata": {
     "description": "xcaeser plugins for coding agents."
   }

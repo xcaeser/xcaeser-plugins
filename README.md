@@ -2,8 +2,12 @@
 
 Plugins for Claude Code.
 
-No plugins are published at the moment. [Qualt](https://work.elbantli.com) is available as an MCP connector at `https://work.elbantli.com/mcp`.
+## x
 
-This repository contains only plugin manifests and workflow skills. It contains no application source, credentials, or user data.
+An engineering workflow that runs on every code change, with no command to type: it weighs the design when it is open, builds through scoped workers, and audits the diff before calling it done. Also `/x:bug-hunter` (find and reproduce the deepest bug) and `/x:state-machine` (map every implicit state machine).
 
-The plugins are proprietary, with permission to install and use them with their services. See [LICENSE](LICENSE).
+```
+/plugin install x --marketplace xcaeser/xcaeser-plugins
+```
+
+Splitting a change into parallel sessions needs the Claude desktop app; elsewhere x builds directly.
