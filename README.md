@@ -23,11 +23,12 @@ It also spends fewer tokens, because workers and auditors read the files and onl
 | `x:work` | The workflow above. Runs automatically. |
 | `/x:think` | Ask Fable for a judgment. Also runs automatically when you ask which option is better, how to approach something with more than one plausible design, or for a decision. |
 | `/x:audit` | Audit a diff for bugs, quality and a simpler solution, then fix what's confirmed. |
+| `/x:optimizer` | Hunt optimizations with Fable, each measured, pushing past the first win toward the floor; Sonnet agents prototype and Haiku agents measure. Read-only. `x:work` runs it when a change sits on a hot path. |
 | `/x:bug-hunter` | Find the deepest, most annoying bug and reproduce it. Read-only. |
 | `/x:state-machine` | Map every implicit state machine: states, transitions, writers, reachable impossible states. Read-only. |
 | `/x:deprecated` | Find every deprecated API use in the repo with the hooks' checks, then fix them all. |
 
-Agents: `x:Fable-thinker`, `x:Opus-auditor`, `x:Sonnet-worker`. They need access to the Fable, Opus and Sonnet models.
+Agents, top to bottom: `x:Fable-thinker` judges, `x:Opus-auditor` audits, `x:Sonnet-worker` builds, `x:Haiku-runner` runs and measures. They need access to the Fable, Opus, Sonnet and Haiku models.
 
 The auditor checks the work against your `CLAUDE.md`, so the rules you write there are the bar.
 

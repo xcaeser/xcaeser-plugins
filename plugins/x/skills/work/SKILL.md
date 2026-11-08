@@ -31,8 +31,9 @@ Then wait for the reports and Integrate.
 2. One worker per independent piece, all in one message; files that import each other or share a shape are one piece. Brief: goal, owned files, files it must not touch, data shape, proof.
 3. Read the diffs, not the summaries; send back anything outside the brief.
 4. Run the proof on the real flow. Inconclusive is a fail.
-5. Run the `x:audit` skill on your diff.
-6. Commit your scope's files and report: what changed, the proof and its output, the audit result.
+5. If speed is the goal or the change sits on a hot path (the primary action, a loop over user data, queries, I/O, rendering, startup), run the `x:optimizer` skill on your diff. Apply the wins the user would feel through workers, re-run the proof, and leave its trade-offs to the user.
+6. Run the `x:audit` skill on your diff.
+7. Commit your scope's files and report: what changed, the proof and its output, the optimizer's wins if it ran, the audit result.
 
 Need to edit a file outside your scope: stop editing and report.
 
