@@ -9,6 +9,18 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/shared-checkout-guard.sh"]
+          }
+        ]
+      }
     ]
   }
 }
