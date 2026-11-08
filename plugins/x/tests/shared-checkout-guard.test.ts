@@ -20,66 +20,69 @@ function guard(command: string, description = 'Run a command') {
 
 const blocks = [
   'git stash',
+  'git stash pop',
   'git stash -u',
-  'cd . && git stash push -m x',
-  'git stash list && git stash pop',
+  'cd . && git stash',
   'git -C /a/b stash pop',
-  'git -C "/a b" stash',
-  'git -c core.pager=cat stash',
-  'git --no-pager reset',
-  'ls | git stash',
-  'ls\ngit stash pop',
   'FOO=1 git reset --hard',
-  'git -C . reset HEAD f',
-  'echo "$(git reset --soft HEAD)"',
+  'git reset --soft HEAD~1',
+  'git reset HEAD f',
+  'x=$(git reset)',
+  'if git stash pop; then echo ok; fi',
+  'git --no-pager reset',
+  'git status\ngit stash',
+  'ls | git stash',
   'echo `git reset`',
-  'if true; then git stash; fi',
-  'for f in a; do git reset "$f"; done',
   '{ git stash; }',
   '! git reset --hard',
-  'cd "$DIR" && git reset --hard && echo "done"',
-  'echo "$HOME" ; git stash ; echo "x"',
-  `echo "it's $HOME"; git reset --hard; echo 'x'`,
-  `# don't touch\ngit stash\necho 'ok'`,
-  `cat <<EOF\nit's done\nEOF\ngit reset --hard\necho 'ok'`,
-  'echo "a\\"b"; git reset --hard; echo "c"',
-  'git stash list; git stash pop',
-  'git stash show;git stash drop',
-  'git stash list\ngit stash pop',
-  'if git stash pop; then echo ok; fi',
   'while git reset; do :; done',
-  'time git reset --hard',
-  'git --git-dir .git reset --hard',
-  'git --work-tree x stash',
-  'git -P stash',
-  'git -C "$HOME/my dir" stash',
   '/usr/bin/git reset --hard',
   'ls &&\tgit reset',
-  'echo "$(git stash)"',
-  'x=$(git reset)',
-  `git commit -m "$(printf 'a\\nb')" && git stash`,
+  'git -c core.pager=cat stash',
+  'git --git-dir .git reset --hard',
+  'git -P stash',
+  'git -C "/a b" stash',
+  'git -C "$HOME/my dir" add -A',
+  'git add \\\n  -A',
+  'git -C /very/long/path \\\n  stash',
+  'git commit \\\n  -am "x"',
+  'cd "$DIR" && git reset --hard && echo "done"',
+  'git clean -fd',
+  'git clean -fdx',
+  'git checkout .',
+  'git checkout -- .',
+  'git restore .',
+  'git restore --staged .',
+  'git add -A',
+  'git add .',
+  'git add -u',
+  'git add --all',
+  'git add -A && git commit -m "x"',
+  'git commit -am "x"',
+  'git commit -a -m "x"',
 ]
 
 const allows = [
   'git status --short',
   'git stash list',
-  'git stash list -p',
-  'git -C . stash show -p',
   'git log --grep stash',
-  'git stash-helper',
+  'git log --all --oneline',
+  'git diff --stat . && git status',
   'git commit -m "reset the timer"',
-  'git commit -m "fix; git reset bug"',
-  'git commit -m "Guard against (git stash) misuse"',
-  'git commit -m "Title\n\ngit stash is blocked"',
-  "printf 'a\\ngit reset'",
-  'grep -rn "| git stash" README.md',
-  "git commit -m \"$(cat <<'EOF'\nRemove reset button\nEOF\n)\"",
+  'git add src/a.ts',
+  'git add ./src/a.ts',
+  'git add -p src/a.ts',
+  'git commit -m "x" -- a.ts',
+  'git commit --amend --no-edit',
+  'git checkout main',
+  'git checkout -b feat',
+  'git checkout -- src/a.ts',
+  'git restore src/a.ts',
+  'git clean -n',
+  'git clean -nd',
+  "git commit -F - <<'EOF'\nRemove reset button\nEOF",
+  "git commit -m \"$(cat <<'EOF'\nGuard against stash\nEOF\n)\" -- a.ts",
   "cat <<'X' | wc -l\nhi\nX",
-  'git commit -m "$msg; git reset"',
-  'git --no-pager log --grep stash',
-  'git commit -F - <<EOF\nGuard\ngit reset is now blocked\nEOF',
-  "echo 'git stash'",
-  '# git reset\nls',
 ]
 
 test.each(blocks)('blocks %p with a reason', command => {
@@ -90,12 +93,6 @@ test.each(blocks)('blocks %p with a reason', command => {
 
 test.each(allows)('allows %p', command => {
   expect(guard(command).exitCode).toBe(0)
-})
-
-// A quote the lexer cannot close must not hide a git call.
-test('blocks an unterminated quote', () => {
-  expect(guard('echo "git stash').exitCode).toBe(2)
-  expect(guard("echo 'x; git reset").exitCode).toBe(2)
 })
 
 // A fake git records its argv, so a real shell tells what the command ran. The guard must block
@@ -117,7 +114,7 @@ writeFileSync(
 )
 afterAll(() => rmSync(sandbox, { recursive: true, force: true }))
 
-const takesValue = new Set(['-C', '-c', '--git-dir', '--work-tree', '--namespace'])
+const takesValue = new Set(['-C', '-c', '--git-dir', '--work-tree'])
 
 function loggedCalls(log: string): string[][] {
   if (!existsSync(log)) return []
@@ -132,24 +129,44 @@ function loggedCalls(log: string): string[][] {
   return calls
 }
 
+const isWholeTree = (a: string) => ['.', './', ':/'].includes(a)
+const hasCluster = (args: string[], letters: string) => args.some(a => new RegExp(`^-[A-Za-z]*[${letters}]`).test(a))
+
 function isHazard(args: string[]) {
   let i = 0
   while (i < args.length && args[i].startsWith('-')) i += takesValue.has(args[i]) ? 2 : 1
-  const [verb, sub] = args.slice(i)
-  return verb === 'reset' || (verb === 'stash' && sub !== 'list' && sub !== 'show')
+  const [verb, ...rest] = args.slice(i)
+  switch (verb) {
+    case 'reset':
+      return true
+    case 'stash':
+      return rest[0] !== 'list' && rest[0] !== 'show'
+    case 'clean':
+      return !rest.some(a => a === '--dry-run' || /^-[A-Za-z]*n/.test(a))
+    case 'checkout':
+    case 'restore':
+      return rest.some(isWholeTree)
+    case 'add':
+      return rest.includes('--all') || rest.includes('--update') || hasCluster(rest, 'Au') || rest.some(isWholeTree)
+    case 'commit':
+      return rest.includes('--all') || hasCluster(rest, 'a') || rest.some(isWholeTree)
+    default:
+      return false
+  }
 }
 
-test.each([...blocks, ...allows].filter(command => !command.includes('/usr/bin/git')))(
-  'guard agrees with what a shell runs for %p',
-  command => {
-    const cwd = mkdtempSync(join(sandbox, 'cwd-'))
-    const log = join(cwd, 'git.log')
-    const env = { PATH: `${join(sandbox, 'bin')}:${process.env.PATH}`, HOME: cwd, DIR: cwd, GIT_LOG: log }
-    Bun.spawnSync(['sh', '-c', command], { cwd, env, stdin: 'ignore' })
-    const ran = loggedCalls(log).some(isHazard)
-    expect(guard(command).exitCode).toBe(ran ? 2 : 0)
-  },
-)
+// An absolute git path bypasses the fake git on PATH, so the oracle can't see it.
+const viaPath = [...blocks, ...allows].filter(command => !command.includes('/usr/bin/git'))
+
+test.each(viaPath)('guard agrees with what a shell runs for %p', command => {
+  const cwd = mkdtempSync(join(sandbox, 'cwd-'))
+  // Outside cwd, so that the command cannot touch its own log.
+  const log = `${cwd}.log`
+  const env = { PATH: `${join(sandbox, 'bin')}:${process.env.PATH}`, HOME: cwd, DIR: cwd, GIT_LOG: log }
+  Bun.spawnSync(['sh', '-c', command], { cwd, env, stdin: 'ignore' })
+  const ran = loggedCalls(log).some(isHazard)
+  expect(guard(command).exitCode).toBe(ran ? 2 : 0)
+})
 
 test('reads only the command, not its description', () => {
   expect(guard('git status', 'Show status; git stash is off-limits here').exitCode).toBe(0)

@@ -28,7 +28,7 @@ Agents: `x:Fable-thinker`, `x:Opus-auditor`, `x:Sonnet-worker`. They need access
 
 The auditor checks the work against your `CLAUDE.md`, so the rules you write there are the bar.
 
-Split sessions share one checkout, so a hook blocks `git stash` and `git reset`: each would take or discard another session's work.
+Split sessions share one checkout, so a hook blocks git commands that would take, discard or sweep in another session's work: `stash`, `reset`, `clean`, restoring the whole tree, and adding or committing everything.
 
 ## usage-mod
 
