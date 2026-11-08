@@ -28,6 +28,14 @@ Agents: `x:Fable-thinker`, `x:Opus-auditor`, `x:Sonnet-worker`. They need access
 
 The auditor checks the work against your `CLAUDE.md`, so the rules you write there are the bar.
 
+## usage-mod
+
+A band above the prompt: rings for your weekly and Fable usage limits, plus folder, branch, context and cost.
+
+```
+/plugin install usage-mod --marketplace xcaeser/xcaeser-plugins
+```
+
 ## License
 
 [MIT](LICENSE)

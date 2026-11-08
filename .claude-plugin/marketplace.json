@@ -8,6 +8,11 @@
       "name": "x",
       "source": "./plugins/x",
       "description": "Engineering workflow for every code change: think, build through workers, risk-gated audit."
+    },
+    {
+      "name": "usage-mod",
+      "source": "./plugins/usage-mod",
+      "description": "Usage rings (week, Fable), folder, branch, context and cost above the prompt"
     }
   ],
   "metadata": {

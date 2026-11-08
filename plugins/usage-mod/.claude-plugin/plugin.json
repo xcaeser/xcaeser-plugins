@@ -1,0 +1,9 @@
+{
+  "name": "usage-mod",
+  "version": "0.1.0",
+  "description": "Rings above the prompt for your weekly and per-model (Fable) usage limits",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "xcaeser"
+  }
+}
