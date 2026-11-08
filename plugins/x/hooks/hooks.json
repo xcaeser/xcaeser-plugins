@@ -1,11 +1,11 @@
 {
   "hooks": {
-    "UserPromptSubmit": [
+    "SessionStart": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'Mandatory: if this request involves any coding work (writing, changing, fixing or refactoring code), invoke the x:work skill via the Skill tool before anything else, no exceptions. Otherwise, if it asks for a decision, which option is better, or how to approach something with more than one plausible design, invoke the x:think skill.'"
+            "command": "echo 'For the whole session: any request that involves coding work (writing, changing, fixing or refactoring code) starts by invoking the x:work skill via the Skill tool, no exceptions. A request for a decision, which option is better, or how to approach something with more than one plausible design, when reading code or docs does not settle it, goes to the x:Fable-thinker agent with the question in the user'\\''s words, the files that matter and what you have learned; check its claims against the code, relay its answer in full with any claim that did not hold, and leave the choices it marks as the user'\\''s to the user.'"
           }
         ]
       }

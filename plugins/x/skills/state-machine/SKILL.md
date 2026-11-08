@@ -3,7 +3,7 @@ name: state-machine
 description: Find every implicit state machine in the app and report its states, transitions, writers and reachable impossible states. Read-only. Use when asked to find, map or audit state machines or lifecycle logic.
 context: fork
 agent: general-purpose
-model: claude-opus-5-5
+model: opus
 effort: high
 argument-hint: "[area to focus on]"
 ---

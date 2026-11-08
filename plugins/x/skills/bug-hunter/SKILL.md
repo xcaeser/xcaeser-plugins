@@ -3,7 +3,7 @@ name: bug-hunter
 description: Hunt the deepest, most annoying bug in the app, the one named or the worst you can find, and prove it by reproducing it. Read-only. Use when asked to find the worst, nastiest or most annoying bug.
 context: fork
 agent: general-purpose
-model: claude-fable-5-1
+model: fable
 effort: high
 argument-hint: "[area or symptom to focus on]"
 ---

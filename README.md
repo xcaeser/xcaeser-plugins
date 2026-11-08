@@ -10,7 +10,7 @@ New versions arrive with `claude plugin update x@xcaeser`, or automatically once
 
 ## x
 
-An engineering workflow that runs on every code change. There is no command to type: a hook routes any coding request through `x:work`, which:
+An engineering workflow that runs on every code change. There is no command to type: a hook set at session start routes any coding request through `x:work`, which:
 
 1. **Thinks** at the start of a feature, and whenever two designs are plausible and the code doesn't settle it, by asking a Fable agent. Fable names what a top professional would do unasked, from which raw material, and what outside judge shows the result is right; then it gives the most elegant shape, built as if the new requirement had been there from the start, and leaves your choices open.
 2. **Builds** through Sonnet workers, one per independent piece, each proving its piece by running it. Large changes with disjoint parts split into parallel sessions (Claude desktop app only; elsewhere x builds directly).
@@ -21,7 +21,7 @@ It also spends fewer tokens, because workers and auditors read the files and onl
 | Skill | Does |
 |---|---|
 | `x:work` | The workflow above. Runs automatically. |
-| `/x:think` | Ask Fable for a judgment. Also runs automatically when you ask which option is better, how to approach something with more than one plausible design, or for a decision. |
+| `/x:think` | Ask Fable for a judgment on a question you name. Without it, decisions and which-option questions still reach Fable. |
 | `/x:audit` | Audit a diff for bugs, quality and a simpler solution, then fix what's confirmed. |
 | `/x:optimizer` | Hunt optimizations with Fable, each measured, pushing past the first win toward the floor; Sonnet agents prototype and Haiku agents measure. Read-only. `x:work` runs it when a change sits on a hot path. |
 | `/x:bug-hunter` | Find the deepest, most annoying bug and reproduce it. Read-only. |
