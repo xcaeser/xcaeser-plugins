@@ -30,6 +30,8 @@ The auditor checks the work against your `CLAUDE.md`, so the rules you write the
 
 Split sessions share one checkout, so a hook blocks git commands that would take, discard or sweep in another session's work: `stash`, `reset`, `clean`, restoring the whole tree, and adding or committing everything.
 
+Zig's compiler never warns about deprecated std declarations, so a hook checks every `.zig` file Claude writes against the `Deprecated` doc comments in the installed std and flags the old API, naming the replacement.
+
 ## usage-mod
 
 A band above the prompt: rings for your weekly and Fable usage limits, plus folder, branch, context and cost.
