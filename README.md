@@ -16,6 +16,8 @@ An engineering workflow that runs on every code change. There is no command to t
 2. **Builds** through Sonnet workers, one per independent piece, each proving its piece by running it. Large changes with disjoint parts split into parallel sessions (Claude desktop app only; elsewhere x builds directly).
 3. **Audits** the finished diff with an independent Opus agent when its risk calls for it (logic, security, data, APIs; not docs or tiny edits), fixes what it confirms, then commits.
 
+It also spends fewer tokens, because workers and auditors read the files and only their conclusions reach the main thread. Comparing 40 sessions the day before installing x with 12 sessions the day after, the median request took 52% less fresh input and 61% less output, and context re-read from cache halved. Averages held level, so the saving is in typical requests, not the largest.
+
 | Skill | Does |
 |---|---|
 | `x:work` | The workflow above. Runs automatically. |
