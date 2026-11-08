@@ -1,6 +1,7 @@
 ---
 name: state-machine
-description: Find every implicit state machine in the app and report its states, transitions, writers and reachable impossible states. Read-only. Use when asked to find, map or audit state machines or lifecycle logic.
+description: Find every implicit state machine in the app and report its states, transitions, writers and reachable impossible states. Read-only.
+disable-model-invocation: true
 context: fork
 agent: general-purpose
 model: opus

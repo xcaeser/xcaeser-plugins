@@ -14,13 +14,18 @@ An engineering workflow that runs on every code change. There is no command to t
 
 1. **Thinks** at the start of a feature, and whenever two designs are plausible and the code doesn't settle it, by asking a Fable agent. Fable names what a top professional would do unasked, from which raw material, and what outside judge shows the result is right; then it gives the most elegant shape, built as if the new requirement had been there from the start, and leaves your choices open.
 2. **Builds** through Sonnet workers, one per independent piece, each proving its piece by running it. Large changes with disjoint parts split into parallel sessions (Claude desktop app only; elsewhere x builds directly).
-3. **Audits** the finished diff with an independent Opus agent when its risk calls for it (logic, security, data, APIs; not docs or tiny edits), fixes what it confirms, then commits.
+3. **Audits** the finished diff with an independent Opus agent when its risk calls for it (logic, security, data, APIs; not docs or tiny edits). The auditor fixes what it proves through Sonnet workers, then x commits.
 
 It also spends fewer tokens, because workers and auditors read the files and only their conclusions reach the main thread. Comparing 40 sessions the day before installing x with 12 sessions the day after, the median request took 52% less fresh input and 61% less output, and context re-read from cache halved. Averages held level, so the saving is in typical requests, not the largest.
 
 | Skill | Does |
 |---|---|
 | `x:work` | The workflow above. Runs automatically. |
+
+The rest run only when you type them; `x:work` also runs the audit and optimizer itself.
+
+| Command | Does |
+|---|---|
 | `/x:think` | Ask Fable for a judgment on a question you name. Without it, decisions and which-option questions still reach Fable. |
 | `/x:audit` | Audit a diff for bugs, quality and a simpler solution, then fix what's confirmed. |
 | `/x:optimizer` | Hunt optimizations with Fable, each measured, pushing past the first win toward the floor; Sonnet agents prototype and Haiku agents measure. Read-only. `x:work` runs it when a change sits on a hot path. |

@@ -1,6 +1,7 @@
 ---
 name: bug-hunter
-description: Hunt the deepest, most annoying bug in the app, the one named or the worst you can find, and prove it by reproducing it. Read-only. Use when asked to find the worst, nastiest or most annoying bug.
+description: Hunt the deepest, most annoying bug in the app, the one named or the worst you can find, and prove it by reproducing it. Read-only.
+disable-model-invocation: true
 context: fork
 agent: general-purpose
 model: fable

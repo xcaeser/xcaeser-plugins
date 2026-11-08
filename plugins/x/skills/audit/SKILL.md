@@ -1,6 +1,7 @@
 ---
 name: audit
-description: Independent audit of a finished diff for bugs, quality and a more elegant solution, then fix what is confirmed. Run before any feature or split unit is called done; it decides from the diff's risk whether the auditor runs.
+description: Independent audit of a finished diff for bugs, quality and a more elegant solution, fixing what it proves. x:work runs it on every change.
+disable-model-invocation: true
 argument-hint: "[diff range or files]"
 ---
 
@@ -21,9 +22,9 @@ Spawn the `x:Opus-auditor` agent. Give it only:
 
 Do not give it your reasoning or conclusions; that anchors it.
 
-Triage what comes back:
-- **Proven bug or quality defect**: fix it (a `x:Sonnet-worker`, or yourself for a small one), then re-run the proof.
-- **Unconfirmed**: reproduce it yourself; drop it if it does not reproduce.
-- **Elegance finding**: adopt it if it deletes code or removes a layer without changing the spec; otherwise name why not in one line.
+The auditor fixes what it proves through workers. When it returns:
+- **Fixed**: read the fix diff and re-run the proof yourself; send back any fix that changes the spec.
+- **Unconfirmed**: reproduce it yourself; fix it through a `x:Sonnet-worker` if it reproduces, drop it if not.
+- **Left, with a reason**: accept the reason or fix it through a worker; say which in one line.
 
-Re-audit only the fix diff, and only if the Gate picks Audit for it; at most two rounds in total. The audit result goes in the final report: findings fixed, findings rejected with the reason, what the auditor did not cover.
+Re-audit only the fix diff, and only if the Gate picks Audit for it; at most two rounds in total. The audit result goes in the final report: findings fixed, findings left with the reason, what the auditor did not cover.

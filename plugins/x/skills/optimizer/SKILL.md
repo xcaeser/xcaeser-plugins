@@ -1,6 +1,7 @@
 ---
 name: optimizer
-description: Stubbornly hunt optimizations in the code (latency, throughput, memory, I/O, queries, startup, bundle size), each proven by a measurement, and keep pushing past the first win toward the floor. Read-only. Use when asked to optimize, speed up or profile something, and from x:work when a change sits on a hot path.
+description: Stubbornly hunt optimizations in the code (latency, throughput, memory, I/O, queries, startup, bundle size), each proven by a measurement, and keep pushing past the first win toward the floor. Read-only. x:work runs it when a change sits on a hot path.
+disable-model-invocation: true
 context: fork
 agent: general-purpose
 model: fable
