@@ -29,11 +29,11 @@ The rest run only when you type them; `x:work` also runs the audit and optimizer
 | `/x:think` | Ask Fable for a judgment on a question you name. Without it, decisions and which-option questions still reach Fable. |
 | `/x:audit` | Audit a diff for bugs, quality and a simpler solution, then fix what's confirmed. |
 | `/x:optimizer` | Hunt optimizations with Fable, each measured, pushing past the first win toward the floor; Sonnet agents prototype and Haiku agents measure. Read-only. `x:work` runs it when a change sits on a hot path. |
-| `/x:bug-hunter` | Find the deepest, most annoying bug and reproduce it. Read-only. |
+| `/x:bug-hunter` | Find the deepest, most annoying bug, reproduce it, and fix it and every reproduced runner-up through Sonnet workers. |
 | `/x:state-machine` | Map every implicit state machine (states, transitions, writers, reachable impossible states) and fix the defects it reproduces through Sonnet workers. |
 | `/x:deprecated` | Find every deprecated API use in the repo with the hooks' checks, then fix them all. |
 
-Each command is a thin wrapper around an agent that carries the whole behavior: `x:Fable-thinker` judges, `x:Fable-optimizer` optimizes, `x:Fable-bug-hunter` hunts bugs, `x:Opus-state-machine` maps state machines and fixes through workers, `x:Opus-auditor` audits and fixes through workers, `x:Sonnet-worker` builds, `x:Haiku-runner` runs and measures. They need access to the Fable, Opus, Sonnet and Haiku models.
+Each command is a thin wrapper around an agent that carries the whole behavior: `x:Fable-thinker` judges, `x:Fable-optimizer` optimizes, `x:Fable-bug-hunter` hunts and fixes bugs through workers, `x:Opus-state-machine` maps state machines and fixes through workers, `x:Opus-auditor` audits and fixes through workers, `x:Sonnet-worker` builds, `x:Haiku-runner` runs and measures. They need access to the Fable, Opus, Sonnet and Haiku models.
 
 The auditor checks the work against your `CLAUDE.md`, so the rules you write there are the bar.
 
