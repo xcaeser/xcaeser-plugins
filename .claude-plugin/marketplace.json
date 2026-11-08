@@ -7,7 +7,7 @@
     {
       "name": "x",
       "source": "./plugins/x",
-      "description": "Engineering workflow for every code change: think, build through workers, mandatory audit."
+      "description": "Engineering workflow for every code change: think, build through workers, risk-gated audit."
     }
   ],
   "metadata": {

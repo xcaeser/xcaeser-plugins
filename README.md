@@ -14,7 +14,7 @@ An engineering workflow that runs on every code change. There is no command to t
 
 1. **Thinks** when two designs are plausible and the code doesn't settle it, by asking a Fable agent for the most elegant shape.
 2. **Builds** through Sonnet workers, one per independent piece, each proving its piece by running it. Large changes with disjoint parts split into parallel sessions (Claude desktop app only; elsewhere x builds directly).
-3. **Audits** the finished diff with an independent Opus agent, fixes what it confirms, then commits.
+3. **Audits** the finished diff with an independent Opus agent when its risk calls for it (logic, security, data, APIs; not docs or tiny edits), fixes what it confirms, then commits.
 
 | Skill | Does |
 |---|---|

@@ -1,6 +1,6 @@
 ---
 name: Opus-auditor
-description: Mandatory independent audit of finished work for bugs, quality and a more elegant solution. Read-only.
+description: Independent audit of finished work for bugs, quality and a more elegant solution. Read-only.
 model: opus
 effort: high
 disallowedTools: Edit, Write, NotebookEdit
