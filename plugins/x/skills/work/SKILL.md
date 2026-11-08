@@ -26,8 +26,8 @@ End your turn; the app continues you when the units finish. Then Integrate.
 2. One worker per independent piece, all in one message; files that import each other or share a shape are one piece. Brief: goal, owned files, files it must not touch, data shape, proof.
 3. Read the diffs, not the summaries; send back anything outside the brief.
 4. Run the proof on the real flow. Inconclusive is a fail.
-5. If speed is the goal or the diff sits on a hot path (the primary action, a loop over user data, queries, I/O, rendering, startup), spawn a `general-purpose` agent on `fable` at high effort to follow `${CLAUDE_SKILL_DIR}/../optimizer/SKILL.md` on it; apply its wins through workers and re-run the proof. Its questions go to the user.
-6. Audit your diff: follow `${CLAUDE_SKILL_DIR}/../audit/SKILL.md`.
+5. If speed is the goal or the diff sits on a hot path (the primary action, a loop over user data, queries, I/O, rendering, startup), run the optimizer on it as `${CLAUDE_SKILL_DIR}/../optimizer/SKILL.md` says; apply its wins through workers and re-run the proof.
+6. Audit your diff as `${CLAUDE_SKILL_DIR}/../audit/SKILL.md` says. Skip it only when the diff changes nothing but docs, comments, formatting, copy or config values, or is one file under about 20 lines adding no branch, loop, state or I/O and touching no auth, secrets, money, persisted data, async lifecycle, public API or code with several callers; then re-read it, run the proof, and report `audit skipped: <reason>`.
 7. Commit the owned files and report: what changed, the proof and its output, the optimizer's wins if it ran, the audit result. A split unit ends its turn here.
 
 Need to edit a file you do not own: stop editing and report.

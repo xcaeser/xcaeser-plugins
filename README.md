@@ -33,7 +33,7 @@ The rest run only when you type them; `x:work` also runs the audit and optimizer
 | `/x:state-machine` | Map every implicit state machine: states, transitions, writers, reachable impossible states. Read-only. |
 | `/x:deprecated` | Find every deprecated API use in the repo with the hooks' checks, then fix them all. |
 
-Agents, top to bottom: `x:Fable-thinker` judges, `x:Opus-auditor` audits, `x:Sonnet-worker` builds, `x:Haiku-runner` runs and measures. They need access to the Fable, Opus, Sonnet and Haiku models.
+Each command is a thin wrapper around an agent that carries the whole behavior: `x:Fable-thinker` judges, `x:Fable-optimizer` optimizes, `x:Fable-bug-hunter` hunts bugs, `x:Opus-state-machine` maps state machines, `x:Opus-auditor` audits and fixes through workers, `x:Sonnet-worker` builds, `x:Haiku-runner` runs and measures. They need access to the Fable, Opus, Sonnet and Haiku models.
 
 The auditor checks the work against your `CLAUDE.md`, so the rules you write there are the bar.
 
