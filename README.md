@@ -21,7 +21,7 @@ It also spends fewer tokens, because workers and auditors read the files and onl
 | Skill | Does |
 |---|---|
 | `x:work` | The workflow above. Runs automatically. |
-| `/x:think` | Ask Fable for a judgment. Also runs automatically when you ask which option is better, how to do something, or for a decision. |
+| `/x:think` | Ask Fable for a judgment. Also runs automatically when you ask which option is better, how to approach something with more than one plausible design, or for a decision. |
 | `/x:audit` | Audit a diff for bugs, quality and a simpler solution, then fix what's confirmed. |
 | `/x:bug-hunter` | Find the deepest, most annoying bug and reproduce it. Read-only. |
 | `/x:state-machine` | Map every implicit state machine: states, transitions, writers, reachable impossible states. Read-only. |

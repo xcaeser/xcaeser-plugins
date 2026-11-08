@@ -10,7 +10,7 @@ Your scope is the whole change. If your prompt says "you are a split unit", your
 
 ## Think (any scope, any time)
 
-Call `x:Fable-thinker` at the start of a new feature, when the user asks which option is better or how to do something, when two or more shapes are plausible and the code does not settle which, when a finding breaks the direction, before choosing a design that ripples across files or a public API, before drawing split seams, or when two attempts have failed. Skip it when reading code or running something answers the question; say in one line which you did. Each consult carries one question, the files that matter and what you have learned. Its answer is input, not orders: its judge becomes the proof, and the forks it leaves open are the only questions for the user.
+Call `x:Fable-thinker` at the start of a new feature, when the user asks which option is better or how to approach something, when two or more shapes are plausible and the code does not settle which, when a finding breaks the direction, before choosing a design that ripples across files or a public API, before drawing split seams, or when two attempts have failed. Skip it when reading code or running something answers the question; say in one line which you did. Each consult carries one question, the files that matter and what you have learned. Its answer is input, not orders: its judge becomes the proof, and the forks it leaves open go to the user.
 
 ## Split (whole change only)
 

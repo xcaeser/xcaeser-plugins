@@ -1,6 +1,6 @@
 ---
 name: think
-description: Consult the Fable-thinker for a judgment. Use when the user asks which option is better, how to do or approach something, or for a decision or recommendation, and whenever a design judgment is open. Skip it when reading code or docs settles the question.
+description: Consult the Fable-thinker for a judgment. Use when the user asks which option is better, how to approach something with more than one plausible design, or for a decision or recommendation, and whenever a design judgment is open. Skip it when reading code or docs settles the question.
 argument-hint: "[question]"
 ---
 
