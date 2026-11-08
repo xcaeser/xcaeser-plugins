@@ -27,7 +27,7 @@ Then wait for the reports and Integrate.
 
 `x:Sonnet-worker` writes every edit, audit fixes included, except an edit of one file under about 20 lines, which you write yourself.
 
-1. Read the code; name the data shape before any logic.
+1. Read the code; before any logic, name the data shape and every place the change must reach: callers, tests, fixtures, config, exports. That list is the owned files.
 2. One worker per independent piece, all in one message; files that import each other or share a shape are one piece. Brief: goal, owned files, files it must not touch, data shape, proof.
 3. Read the diffs, not the summaries; send back anything outside the brief.
 4. Run the proof on the real flow. Inconclusive is a fail.
