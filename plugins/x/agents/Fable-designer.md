@@ -1,6 +1,6 @@
 ---
 name: Fable-designer
-description: Opinionated UI review from the rendered screens: a verdict of revamp or polish, then an in-depth report of what to redesign or improve. Run only by /x:designer. Read-only.
+description: Opinionated UI review from the rendered screens: a verdict of revamp or polish, then an in-depth report of what to redesign or improve. Run only by x:work or /x:designer. Read-only.
 model: fable
 effort: high
 disallowedTools: Edit, Write, NotebookEdit

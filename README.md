@@ -13,8 +13,10 @@ New versions arrive with `claude plugin update x@xcaeser`, or automatically once
 An engineering workflow that runs on every code change. There is no command to type: a hook set at session start routes any coding request through `x:work`, which:
 
 1. **Thinks** at the start of a feature, and whenever two designs are plausible and the code doesn't settle it, by asking a Fable agent. Fable names what a top professional would do unasked, from which raw material, and what outside judge shows the result is right; then it gives the most elegant shape, built as if the new requirement had been there from the start, and leaves your choices open.
-2. **Builds** through Sonnet workers, one per independent piece, each proving its piece by running it. Large changes with disjoint parts split into parallel sessions (Claude desktop app only; elsewhere x builds directly).
-3. **Audits** the finished diff with an independent Opus agent when its risk calls for it (logic, security, data, APIs; not docs or tiny edits). The auditor fixes what it proves through Sonnet workers, then x commits.
+2. **Checks the architecture** with the Fable architect when a change adds or moves a module, boundary or core data shape, and designs on its findings; a restructure verdict comes to you first.
+3. **Builds** through Sonnet workers, one per independent piece, each proving its piece by running it. Large changes with disjoint parts split into parallel sessions (Claude desktop app only; elsewhere x builds directly).
+4. **Reviews** the rendered screens with the Fable designer when a change adds or reshapes UI, and applies its findings; a revamp verdict comes to you.
+5. **Audits** the finished diff with an independent Opus agent when its risk calls for it (logic, security, data, APIs; not docs or tiny edits). The auditor fixes what it proves through Sonnet workers, then x commits.
 
 It also spends fewer tokens, because workers and auditors read the files and only their conclusions reach the main thread. Comparing 40 sessions the day before installing x with 12 sessions the day after, the median request took 52% less fresh input and 61% less output, and context re-read from cache halved. Averages held level, so the saving is in typical requests, not the largest.
 
@@ -22,16 +24,16 @@ It also spends fewer tokens, because workers and auditors read the files and onl
 |---|---|
 | `x:work` | The workflow above. Runs automatically. |
 
-The rest run only when you type them; `x:work` also runs the audit and optimizer itself.
+The rest run only when you type them; `x:work` also runs the audit, optimizer, architect and designer itself when a change calls for them.
 
 | Command | Does |
 |---|---|
 | `/x:think` | Ask Fable for a judgment on a question you name. Without it, decisions and which-option questions still reach Fable. |
 | `/x:audit` | Audit a diff for bugs, quality and a simpler solution, then fix what's confirmed. |
 | `/x:optimizer` | Hunt optimizations with Fable, each measured, pushing past the first win toward the floor; Sonnet agents prototype and Haiku agents measure. Read-only. `x:work` runs it when a change sits on a hot path. |
-| `/x:architecture` | Have Fable audit the architecture and its elegance with a firm opinion: a verdict of restructure or refine, then an in-depth report from the code, dependency graph and git history of what to reshape, simplify or cut. Read-only. |
+| `/x:architecture` | Have Fable audit the architecture and its elegance with a firm opinion: a verdict of restructure or refine, then an in-depth report from the code, dependency graph and git history of what to reshape, simplify or cut. Read-only. `x:work` runs it before a change that moves a boundary or core data shape. |
 | `/x:bug-hunter` | Find the deepest, most annoying bug, reproduce it, and fix it and every reproduced runner-up through Sonnet workers. |
-| `/x:designer` | Have Fable review the rendered UI with a firm opinion: a verdict of revamp or polish, then an in-depth report of what to redesign or improve, with screenshots, measurements and mockups. Read-only. |
+| `/x:designer` | Have Fable review the rendered UI with a firm opinion: a verdict of revamp or polish, then an in-depth report of what to redesign or improve, with screenshots, measurements and mockups. Read-only. `x:work` runs it after a change that adds or reshapes UI. |
 | `/x:state-machine` | Map every implicit state machine (states, transitions, writers, reachable impossible states) and fix the defects it reproduces through Sonnet workers. |
 | `/x:deprecated` | Find every deprecated API use in the repo with the hooks' checks, then fix them all. |
 

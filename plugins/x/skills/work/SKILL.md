@@ -22,12 +22,13 @@ End your turn; the app continues you when the units finish. Then Integrate.
 
 `x:Sonnet-worker` writes every edit, audit fixes included, except an edit of one file under about 20 lines, which you write yourself.
 
-1. Read every file the change affects and design as if its requirement had been there from the start. Before any logic, name the data shape and every place the change must reach: callers, types, tests, fixtures, config, exports, docs and examples. That list is the owned files.
+1. Read every file the change affects and design as if its requirement had been there from the start. Before any logic, name the data shape and every place the change must reach: callers, types, tests, fixtures, config, exports, docs and examples. That list is the owned files. If the change adds or moves a module, a boundary or a core data shape, first have `x:Fable-architect` audit the modules it lands in, and design on its findings; a Restructure verdict goes to the user before you build.
 2. One worker per independent piece; files that import each other or share a shape are one piece. Each brief adds the data shape.
 3. Run the proof on the real flow. Inconclusive is a fail.
 4. If speed is the goal or the diff sits on a hot path (the primary action, a loop over user data, queries, I/O, rendering, startup), run the optimizer on it as `${CLAUDE_SKILL_DIR}/../optimizer/SKILL.md` says; apply its wins through workers and re-run the proof.
-5. Audit your diff as `${CLAUDE_SKILL_DIR}/../audit/SKILL.md` says, except in two cases, where you re-read it, run the proof and report `audit skipped: <reason>`: the diff changes nothing but docs, comments, formatting, copy or config values; or it is an edit you wrote yourself that adds no branch, loop, state or I/O and touches no auth, secrets, money, persisted data, async lifecycle, public API or code with several callers.
-6. Commit the owned files, with no attribution trailer, and report: what changed, the proof and its output, the optimizer's wins if it ran, the audit result. A split unit ends its turn here.
+5. If the diff adds or reshapes a screen, flow or component users see (more than copy or a value), have `x:Fable-designer` review the screens it touches; apply its findings through workers and re-run the proof. A Revamp verdict and its taste calls go to the user.
+6. Audit your diff as `${CLAUDE_SKILL_DIR}/../audit/SKILL.md` says, except in two cases, where you re-read it, run the proof and report `audit skipped: <reason>`: the diff changes nothing but docs, comments, formatting, copy or config values; or it is an edit you wrote yourself that adds no branch, loop, state or I/O and touches no auth, secrets, money, persisted data, async lifecycle, public API or code with several callers.
+7. Commit the owned files, with no attribution trailer, and report: what changed, the proof and its output, the architect's, optimizer's and designer's results if they ran, the audit result. A split unit ends its turn here.
 
 Need to edit a file you do not own: stop editing and report.
 
