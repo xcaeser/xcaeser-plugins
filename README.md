@@ -29,12 +29,13 @@ The rest run only when you type them; `x:work` also runs the audit and optimizer
 | `/x:think` | Ask Fable for a judgment on a question you name. Without it, decisions and which-option questions still reach Fable. |
 | `/x:audit` | Audit a diff for bugs, quality and a simpler solution, then fix what's confirmed. |
 | `/x:optimizer` | Hunt optimizations with Fable, each measured, pushing past the first win toward the floor; Sonnet agents prototype and Haiku agents measure. Read-only. `x:work` runs it when a change sits on a hot path. |
+| `/x:architecture` | Have Fable audit the architecture and its elegance with a firm opinion: a verdict of restructure or refine, then an in-depth report from the code, dependency graph and git history of what to reshape, simplify or cut. Read-only. |
 | `/x:bug-hunter` | Find the deepest, most annoying bug, reproduce it, and fix it and every reproduced runner-up through Sonnet workers. |
 | `/x:designer` | Have Fable review the rendered UI with a firm opinion: a verdict of revamp or polish, then an in-depth report of what to redesign or improve, with screenshots, measurements and mockups. Read-only. |
 | `/x:state-machine` | Map every implicit state machine (states, transitions, writers, reachable impossible states) and fix the defects it reproduces through Sonnet workers. |
 | `/x:deprecated` | Find every deprecated API use in the repo with the hooks' checks, then fix them all. |
 
-Each command is a thin wrapper around an agent that carries the whole behavior: `x:Fable-thinker` judges, `x:Fable-optimizer` optimizes, `x:Fable-bug-hunter` hunts and fixes bugs through workers, `x:Fable-designer` reviews the UI, `x:Opus-state-machine` maps state machines and fixes through workers, `x:Opus-auditor` audits and fixes through workers, `x:Sonnet-worker` builds, `x:Haiku-runner` runs and measures. They need access to the Fable, Opus, Sonnet and Haiku models.
+Each command is a thin wrapper around an agent that carries the whole behavior: `x:Fable-thinker` judges, `x:Fable-optimizer` optimizes, `x:Fable-bug-hunter` hunts and fixes bugs through workers, `x:Fable-architect` audits architecture and elegance, `x:Fable-designer` reviews the UI, `x:Opus-state-machine` maps state machines and fixes through workers, `x:Opus-auditor` audits and fixes through workers, `x:Sonnet-worker` builds, `x:Haiku-runner` runs and measures. They need access to the Fable, Opus, Sonnet and Haiku models.
 
 The auditor checks the work against your `CLAUDE.md`, so the rules you write there are the bar.
 
