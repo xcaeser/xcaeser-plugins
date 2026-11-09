@@ -1,6 +1,6 @@
 {
   "name": "x",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "description": "Engineering workflow for every code change: think, build through workers, risk-gated audit. Plus optimizer, bug-hunter, state-machine, designer, architecture and security.",
   "author": { "name": "xcaeser" }
 }

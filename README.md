@@ -14,7 +14,7 @@ An engineering workflow that runs on every code change. There is no command to t
 
 1. **Thinks** at the start of a feature, and whenever two designs are plausible and the code doesn't settle it, by asking a Fable agent. Fable names what a top professional would do unasked, from which raw material, and what outside judge shows the result is right; then it gives the most elegant shape, built as if the new requirement had been there from the start, and leaves your choices open.
 2. **Checks the architecture** with the Fable architect when a change adds or moves a module, boundary or core data shape, and designs on its findings; a restructure verdict comes to you first.
-3. **Builds** through Sonnet workers, one per independent piece, each proving its piece by running it. Large changes with disjoint parts split into parallel sessions (Claude desktop app only; elsewhere x builds directly).
+3. **Builds** through Sonnet workers, one per independent piece, each proving its piece by running it.
 4. **Reviews** the rendered screens with the Fable designer when a change adds or reshapes UI, and applies its findings; a revamp verdict comes to you.
 5. **Audits** the finished diff with an independent Opus agent when its risk calls for it (logic, security, data, APIs; not docs or tiny edits). The auditor fixes what it proves through Sonnet workers, then x commits.
 
@@ -42,7 +42,7 @@ Each command is a thin wrapper around an agent that carries the whole behavior: 
 
 The auditor checks the work against your `CLAUDE.md`, so the rules you write there are the bar.
 
-Split sessions share one checkout, so a hook blocks git commands that would take, discard or sweep in another session's work: `stash`, `reset`, `clean`, restoring the whole tree, and adding or committing everything.
+Other sessions may share your checkout, so a hook blocks git commands that would take, discard or sweep in another session's work: `stash`, `reset`, `clean`, restoring the whole tree, and adding or committing everything.
 
 Models write deprecated APIs from memory, and builds let them through, so hooks check the code Claude just wrote in Zig, TypeScript, Rust and Go with the project's own toolchain and flag each old call with the note that names its replacement:
 

@@ -1,5 +1,5 @@
 #!/bin/sh
-# PreToolUse guard for Bash. x:work split sessions share one checkout, so git calls that take,
+# PreToolUse guard for Bash. Other sessions may share one checkout, so git calls that take,
 # discard or sweep in the whole tree touch other sessions' work. A backstop for habits, not a
 # parser: segments are split at separators and newlines and quotes are not parsed, so quoted text
 # that reads like a hazard is blocked too and Claude rewords. Claude Code's `if` rules are not
