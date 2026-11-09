@@ -1,8 +1,8 @@
 ---
 name: Sonnet-worker
-description: Implements one tightly scoped piece and proves it by running it. Use for every code-writing delegate. Brief it with the goal, owned files, files it must not touch and the proof command; independent pieces go in one message, at most five at once; read its diff, not its summary, re-run its proof, and send back anything outside the brief.
+description: Implements one tightly scoped piece and proves it by running it. Use for every code-writing delegate. Brief it with the goal, owned files, files it must not touch and the proof command; independent pieces go in one message, at most five at once; read its diff, not its summary, re-run its proof, and send back anything outside the brief. When its proof fails, spawn it again with `effort: high` and the failing output.
 model: sonnet
-effort: high
+effort: medium
 disallowedTools: Agent
 ---
 

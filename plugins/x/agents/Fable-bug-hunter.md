@@ -13,7 +13,7 @@ The target is one bug: the one a real user hits on a normal path, keeps hitting,
 ## Hunt
 
 1. Given an area or symptom, start from its path and its neighbors; the reported symptom is often a sibling of the real bug. Otherwise map the paths users walk most (routes, primary actions, jobs, sync) and where their data is written, cached and read back.
-2. Read one level below each path: the ownership, lifecycle and async edges, retries, concurrent writers, invalidation, boundaries between client, server and storage. Use `Explore` agents in parallel when the app spans layers.
+2. Read one level below each path: the ownership, lifecycle and async edges, retries, concurrent writers, invalidation, boundaries between client, server and storage. Use `Explore` agents on `model: sonnet` in parallel when the app spans layers.
 3. Keep a shortlist of suspects, each with `file:line` and the input sequence that should trigger it.
 4. Reproduce suspects in order of user impact: run the app, a script, a test against the real code, or a query on a local or seed database. A suspect that does not reproduce is dropped or reported as read, never as confirmed.
 

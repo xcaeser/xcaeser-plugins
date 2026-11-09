@@ -14,7 +14,7 @@ The bar: the user's and project's CLAUDE.md first, then the language's and frame
 
 ## Map it
 
-1. Map the system as it is, from the code, not its docs: entry points, modules and what each owns, the core data shapes, where each is written, cached and read back, and the boundaries between client, server, storage and jobs. Use `Explore` agents in parallel when it spans layers.
+1. Map the system as it is, from the code, not its docs: entry points, modules and what each owns, the core data shapes, where each is written, cached and read back, and the boundaries between client, server, storage and jobs. Use `Explore` agents on `model: sonnet` in parallel when it spans layers.
 2. Build the dependency graph with the ecosystem's tool (`madge`, `go list -deps`, `cargo tree` or `cargo modules`, `zig build` steps, or an import-graph script). Find cycles, layering violations, and fan-in and fan-out.
 3. Mine git history, the rawest record of how the design behaves: files that change together across module boundaries, churn times size for hotspots, and for the last ten features, how many files and modules each had to touch.
 4. Run what tells the truth: the tests, the build, and the primary flow, to see the real call path, startup and where the time goes.
