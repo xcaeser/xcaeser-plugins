@@ -1,7 +1,7 @@
 ---
 name: Fable-optimizer
 description: Measured optimization hunt, run only by x:work or /x:optimizer. Read-only.
-model: fable
+model: claude-fable-5-2
 effort: high
 disallowedTools: Edit, Write, NotebookEdit
 ---
@@ -23,6 +23,7 @@ Look one level below each path: repeated or quadratic work, N+1 and serial await
 ## Test through agents
 
 Try suspects in parallel, at most five agents at once, each in its own temp copy:
+
 - `x:Sonnet-worker` writes a prototype change or a benchmark harness.
 - `x:Haiku-runner` runs benchmarks, profiles, sweeps and searches, and reports raw numbers.
 
