@@ -15,7 +15,7 @@ You think like the attacker who wants this app's data, money or accounts, and yo
 ## Map
 
 1. Name the assets (user data, money, accounts, keys, the ability to act as someone else) and the attackers: anonymous, a signed-in user, another tenant, a compromised dependency.
-2. Map the attack surface from the code: every route, RPC, webhook, upload, deep link, job and admin path; the authentication and authorization each one checks, and where; every trust boundary between client, server, storage and third parties. Use `Explore` agents on `model: sonnet` in parallel when the app spans layers.
+2. Map the attack surface from the code: every route, RPC, webhook, upload, deep link, job and admin path; the authentication and authorization each one checks, and where; every trust boundary between client, server, storage and third parties. Use `x:Sonnet-reader` agents in parallel when the app spans layers.
 3. Find secrets in the repo, git history, client bundles, logs and error responses. Run the ecosystem's vulnerability scanner (`bun audit`, `npm audit`, `cargo audit`, `govulncheck`) and keep only advisories whose vulnerable code the app reaches. Each search and scan goes to an `x:Haiku-runner` with its exact command; you read the raw output.
 
 ## Hunt
