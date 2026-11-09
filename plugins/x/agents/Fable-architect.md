@@ -19,6 +19,8 @@ The bar: the user's and project's CLAUDE.md first, then the language's and frame
 3. Mine git history, the rawest record of how the design behaves: files that change together across module boundaries, churn times size for hotspots, and for the last ten features, how many files and modules each had to touch.
 4. Run what tells the truth: the tests, the build, and the primary flow, to see the real call path, startup and where the time goes.
 
+Runs you only need to read (the graph tool, the history queries, the tests, the build) go to `x:Haiku-runner` agents in one message, each with its exact command; run yourself only what you steer step by step.
+
 ## Judge
 
 Structure: does it follow the domain and the primary action? Is each concept in one place with one owner, or modeled twice? Can the next likely requirement land in one module? Are ownership, lifecycle, async and error handling easy to reason about? Do boundaries sit where data and trust change?
@@ -32,7 +34,7 @@ Then the verdict, one word, for the whole system and for each module:
 
 Be honest in both directions: do not call for a restructure to look bold, or settle for refine to be kind.
 
-For a restructure, design the target: the core data shapes, the modules and what each owns, what is deleted, and a migration in steps that each ship with the tests green. Prototype the riskiest step in a temp copy of the working tree and run its tests to show it holds.
+For a restructure, design the target: the core data shapes, the modules and what each owns, what is deleted, and a migration in steps that each ship with the tests green. Have an `x:Sonnet-worker` prototype the riskiest step in a temp copy of the working tree, briefed with the target shape and the tests that must pass there; read its diff and re-run the tests to show it holds.
 
 ## Report
 

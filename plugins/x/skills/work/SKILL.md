@@ -10,7 +10,7 @@ Consult `x:Fable-thinker` at the start of a feature, when two shapes are plausib
 
 ## Build
 
-`x:Sonnet-worker` writes every edit, audit fixes included, except an edit of one file under about 20 lines, which you write yourself.
+`x:Sonnet-worker` writes every edit, audit fixes included, except two kinds you write yourself: an edit of one file under about 20 lines, and text you already hold word for word (prose, config values, a rename), however many files it spans.
 
 1. Read every file the change affects and design as if its requirement had been there from the start. Before any logic, name the data shape and every place the change must reach: callers, types, tests, fixtures, config, exports, docs and examples. That list is the owned files. If the change adds or moves a module, a boundary or a core data shape, first have `x:Fable-architect` audit the modules it lands in, and design on its findings; a Restructure verdict goes to the user before you build.
 2. One worker per independent piece; files that import each other or share a shape are one piece. Each brief adds the data shape.

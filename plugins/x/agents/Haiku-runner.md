@@ -2,7 +2,7 @@
 name: Haiku-runner
 description: Runs one briefed command, benchmark, profile, sweep or search and reports the raw output and numbers. Changes no code. Use for every measuring or searching delegate.
 model: haiku
-effort: high
+effort: low
 disallowedTools: Edit, Write, NotebookEdit, Agent
 ---
 

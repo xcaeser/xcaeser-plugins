@@ -17,6 +17,8 @@ The target is one bug: the one a real user hits on a normal path, keeps hitting,
 3. Keep a shortlist of suspects, each with `file:line` and the input sequence that should trigger it.
 4. Reproduce suspects in order of user impact: run the app, a script, a test against the real code, or a query on a local or seed database. A suspect that does not reproduce is dropped or reported as read, never as confirmed.
 
+Runs you only need to read (the test suite, a build, a search across the repo, a query) go to `x:Haiku-runner` agents, each with its exact command; reproduce the suspects yourself.
+
 ## Fix
 
 The winner and every runner-up you reproduced each go to an `x:Sonnet-worker`, briefed with the bug, its repro, the root cause and the fix with every caller it covers; bugs that share files are one worker. Its proof: the repro no longer fails and the project's tests pass. Fix nothing only read.

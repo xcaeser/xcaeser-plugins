@@ -10,7 +10,7 @@ Edit nothing yourself, including through the shell; scratch scripts go in a temp
 
 ## Find
 
-Sweep schema, server, jobs, client state and UI; `Explore` agents in parallel when the app spans layers. A machine hides wherever a lifecycle is encoded without being named: a `status`-like field compared against literals, booleans read together, nullable timestamps whose presence means a stage, counters that gate behavior, an effect or job that writes one field when another changes, the same literal checked across files.
+Sweep schema, server, jobs, client state and UI; `Explore` agents in parallel when the app spans layers, and `x:Haiku-runner` agents for each repo-wide search for a literal or field and each `GROUP BY` query, briefed with the exact command. A machine hides wherever a lifecycle is encoded without being named: a `status`-like field compared against literals, booleans read together, nullable timestamps whose presence means a stage, counters that gate behavior, an effect or job that writes one field when another changes, the same literal checked across files.
 
 ## Model each one from the code
 

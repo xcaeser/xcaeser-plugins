@@ -32,7 +32,7 @@ Then the verdict, one word, for the whole UI and for each screen:
 
 Be honest in both directions: do not call for a revamp to look bold, or settle for polish to be kind.
 
-For a revamp, design the replacement: the new structure, each screen's one primary action, what is cut or merged, and the flow in fewer steps. Mock the one or two screens that carry the change as static HTML in the temp directory, on the project's tokens or a stated scale, and screenshot each next to the current screen at the same size.
+For a revamp, design the replacement: the new structure, each screen's one primary action, what is cut or merged, and the flow in fewer steps. Have an `x:Sonnet-worker` build the one or two screens that carry the change as static HTML in the temp directory, briefed with your layout, copy and exact values on the project's tokens or a stated scale. Screenshot each next to the current screen at the same size, and send back what misses the design.
 
 ## Report
 

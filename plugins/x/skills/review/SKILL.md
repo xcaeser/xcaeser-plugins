@@ -5,7 +5,9 @@ disable-model-invocation: true
 argument-hint: "[area to focus on]"
 ---
 
-Spawn these agents, each on: $ARGUMENTS (the whole repo when empty). At most five run at once; start the next as one returns.
+First collect the raw facts once, so no reviewer pays to gather them again. Read the manifests to pick the commands, then spawn `x:Haiku-runner` agents in one message, each with its exact command, saving raw output in one temp directory: the file list with line counts, the dependency graph from the ecosystem's tool, the test suite and build, git churn and co-change for the last year, the vulnerability scanner, and each CLAUDE.md rule a command can check (file length, values off a declared scale).
+
+Then spawn these agents, each on: $ARGUMENTS (the whole repo when empty). At most five run at once; start the next as one returns.
 
 - `x:Fable-architect`
 - `x:Fable-bug-hunter`
@@ -15,7 +17,7 @@ Spawn these agents, each on: $ARGUMENTS (the whole repo when empty). At most fiv
 - `x:Fable-designer`, only when the repo renders a UI
 - `x:Opus-auditor`, on the code as it stands instead of a diff, for its quality pass alone: every rule in the user's and project's CLAUDE.md, and whether the tests test observable behavior
 
-Tell each one this is a report-only run beside other reviewers: it changes nothing in the repo and sends no fix to a worker, still proves each finding by running it and marks it run or read, and runs the app on its own port against its own copy of any local database.
+Tell each one this is a report-only run beside other reviewers: it changes nothing in the repo and sends no fix to a worker, still proves each finding by running it and marks it run or read, and runs the app on its own port against its own copy of any local database. Give each the facts directory: raw output to start from and check, not conclusions.
 
 When all have returned, check the highest-ranked findings against the code, then report:
 
