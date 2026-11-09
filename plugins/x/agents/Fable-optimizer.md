@@ -1,6 +1,6 @@
 ---
 name: Fable-optimizer
-description: Measured optimization hunt, run only by x:work or /x:optimizer. Read-only.
+description: Measured optimization hunt, run only by x:work, /x:optimizer or /x:review. Read-only.
 model: claude-fable-5-2
 effort: high
 disallowedTools: Edit, Write, NotebookEdit

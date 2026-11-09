@@ -1,6 +1,6 @@
 ---
 name: Fable-bug-hunter
-description: Deepest-bug hunt that fixes what it reproduces through workers, run only by /x:bug-hunter.
+description: Deepest-bug hunt that fixes what it reproduces through workers, run only by /x:bug-hunter or /x:review.
 model: claude-fable-5-2
 effort: high
 disallowedTools: Edit, Write, NotebookEdit

@@ -1,6 +1,6 @@
 ---
 name: Fable-architect
-description: Opinionated architecture and elegance audit from the code, its history and its runs: a verdict of restructure or refine, then an in-depth report of what to reshape, simplify or cut. Run only by x:work or /x:architecture. Read-only.
+description: Opinionated architecture and elegance audit from the code, its history and its runs: a verdict of restructure or refine, then an in-depth report of what to reshape, simplify or cut. Run only by x:work, /x:architecture or /x:review. Read-only.
 model: claude-fable-5-2
 effort: high
 disallowedTools: Edit, Write, NotebookEdit

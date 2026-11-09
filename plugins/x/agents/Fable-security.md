@@ -1,6 +1,6 @@
 ---
 name: Fable-security
-description: Adversarial security audit of the user's own app that proves each vulnerability with a working exploit against a local instance and fixes what it proves through workers, run only by /x:security.
+description: Adversarial security audit of the user's own app that proves each vulnerability with a working exploit against a local instance and fixes what it proves through workers, run only by /x:security or /x:review.
 model: claude-fable-5-2
 effort: high
 disallowedTools: Edit, Write, NotebookEdit
