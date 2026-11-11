@@ -1,6 +1,6 @@
 # Worst-case data
 
-Realistic worst-case values for every rendered field, how they enter, which states, widths and environments to check, each common break with its fix, truncation rules, and severity.
+Realistic worst-case values for every rendered field, how they enter, which states, widths and environments to check, each common break with its fix, truncation rules, severity, and how a fix is shown.
 
 ## Judge
 
@@ -10,7 +10,7 @@ Realistic worst-case values for every rendered field, how they enter, which stat
 - D4 Every rendered value is mapped with source, type, limit and optional flag, including the forgotten ones: header counts, relative timestamps, badge and status text, data-driven button labels, tooltips, avatar images, and list length.
 - D5 Limits come from Zod, Yup or Valibot schemas, migrations, API types and `maxLength` attributes. Frontend and backend disagreeing (a 50-character input saving into a 255-character column) is a finding, since imports and the API will eventually deliver the longer value.
 - D6 Separate states are checked: Empty (zero items), No-results (a search with no match, distinct from empty), One (a lone item, plus every count sitting at 1), Huge (the realistic upper bound, 1,000 or more rows when unpaginated).
-- D7 Check at the component's real container width, then 320px, a 280px sidebar placement, and the widest supported layout (2560px).
+- D7 Check at the component's real container width, then 320px, a 280px sidebar placement, the widest supported layout (2560px), and one step either side of every breakpoint the layout declares, where two sets of rules meet.
 - D8 Check at 200% browser zoom or a raised root font size (text grows, boxes do not), in dark mode, and under `dir="rtl"` on a wrapper when the product supports them.
 - D9 Names: wrap identifying names and titles; two lines is fine, four means the column is too narrow.
 - D10 Secondary metadata (role, description, last-message preview) truncates at the end, and offer a route to the whole value.
@@ -38,6 +38,9 @@ Realistic worst-case values for every rendered field, how they enter, which stat
 - D32 Times use `Intl.RelativeTimeFormat` and `Intl.DateTimeFormat`, not hand-built strings; relative text rolls to an absolute date after about a week.
 - D33 Severity: Broken is unreadable content, an unreachable action, or wrong data shown. Ugly is legible yet plainly off (an oval avatar, a two-line badge). Fragile is sound today but a single plausible input away from failing (no cap, no fallback). Report worst first.
 - D34 The worst-case fixture stays next to the demo data, same shape, as a regression fixture; it is dev-only and never ships. After any fix, re-check every state, including Demo, which must not regress.
+- D35 Check on a slow connection, where the states a local server hides stay on screen: the browser's slowest 3G throttle, or every response delayed a second or two at the D2 boundary. Each action shows at once that it was taken and cannot fire twice while it is pending; loading holds the final layout, so nothing moves when data, fonts or images land; a request that fails or times out says so, keeps what the person entered and offers the retry.
+- D36 Check with touch emulation (a coarse pointer and no hover): every action is reachable without hover, and every target is at least 44x44px. Emulation settles reach and size only; `mobile-web.md` W23 names what needs a real phone.
+- D37 A fix is shown, not claimed: the screen is captured before and after at the same width, state, data and scroll position, and the pair is kept with one line on what changed. A fix without its pair is reported as unverified.
 
 ## Build
 
@@ -181,7 +184,9 @@ Spaceless strings, so line breaking has no opening.
 | 200% zoom or large text setting | Fixed heights cut off text as it grows |
 | Dark mode | Hardcoded colors, borders and logos that disappear |
 | `dir="rtl"` | Icons, chevrons, padding and the sequence of trailing actions |
-| Touch device | Hover-only actions cannot be reached |
+| Touch device | Hover-only actions cannot be reached; targets under 44px |
+| A step either side of each breakpoint | Both layouts' rules apply, or neither: navigation doubled or gone, columns overlapping |
+| Slow connection | A tap that shows nothing, a second tap that submits twice, content that jumps as it loads, a spinner that never ends when the request fails |
 
 ### Break signatures and fixes
 
@@ -214,3 +219,5 @@ Use `Intl.NumberFormat(locale, ...)` for counts and currency, `Intl.PluralRules`
 ### Verification
 
 Screenshot each state at each width when a browser is available; otherwise reason from the CSS and mark which findings were seen and which inferred. Close by listing what held up, which shows the test was real and what not to touch.
+
+After a fix, capture the screen again exactly as the finding was captured and name the two images for the finding (`<finding>-before.png`, `<finding>-after.png`). The summary lists each pair with the line that changed, then every fix that has no pair and why.
