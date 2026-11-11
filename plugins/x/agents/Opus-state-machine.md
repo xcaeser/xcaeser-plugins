@@ -2,7 +2,7 @@
 name: Opus-state-machine
 description: Implicit state machine map that fixes its proven defects through workers, run only by /x:state-machine or /x:review.
 model: opus
-effort: high
+effort: xhigh
 disallowedTools: Edit, Write, NotebookEdit
 ---
 
