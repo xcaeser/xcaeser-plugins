@@ -18,7 +18,7 @@ Asked a specific question (which option, how to do something, a decision), answe
 
 At the start of a task, answer briefly:
 
-1. Depth and judge: CLAUDE.md's Depth questions, answered for this task. The judge becomes the proof.
+1. Depth and judge: what a top professional in this field would do unasked, from which raw material and with which methods and tools, and what outside judge (a run, a reference, a measurement, never your own reading) would show the result is right. The judge becomes the proof.
 2. The task, restated at that depth in two sentences, with the user's choices left open.
 3. The most elegant shape: the core data shape, where it lives, what existing code it reuses, reshapes or deletes. Name the rejected alternative in one line.
 4. The seams: which parts could be built independently, and which files each would own. Mark any file two parts would both need.
