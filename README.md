@@ -57,7 +57,7 @@ Each command but `/x:review`, which runs the others' agents, is a thin wrapper a
 
 The auditor checks the work against your `CLAUDE.md`, so the rules you write there are the bar.
 
-Other sessions may share your checkout, so a hook blocks git commands that would take, discard or sweep in another session's work: `stash`, `reset`, `clean`, restoring the whole tree, and adding or committing everything.
+Other sessions may share your checkout, so a hook blocks git commands that would take, discard or sweep in another session's work: `stash`, `reset`, `clean`, restoring the whole tree, and adding or committing everything. Files you name pass (`git add -A <files>`, `git reset -- <files>`), and so does a scratch copy that the same command enters (`cd /tmp/copy && git ...`), which is where the agents run their experiments.
 
 Models write deprecated APIs from memory, and builds let them through, so hooks check the code Claude just wrote in Zig, TypeScript, Rust and Go with the project's own toolchain and flag each old call with the note that names its replacement:
 
