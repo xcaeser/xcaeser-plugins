@@ -41,4 +41,4 @@ For a revamp, design the replacement: the new structure, each screen's one prima
 3. **Redesign** (revamp only): the new structure, what is cut, the before-and-after screenshot paths, and the order to build it in.
 4. **Cut**: elements, settings, text and screens that should not exist.
 5. **Not covered**: screens or states you could not reach, and why.
-6. **Taste calls**: brand, tone and trade-offs that are the user's to make, each as a question with your pick.
+6. **Taste calls**: brand, tone and trade-offs that are the user's to make, each as a question with your pick. When a call turns on feel that a static mockup cannot settle, name the piece and the axes to explore with `/x:prototype`.
