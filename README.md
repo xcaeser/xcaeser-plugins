@@ -1,9 +1,22 @@
 # xcaeser plugins
 
-Plugins for Claude Code.
+Two plugins for Claude Code:
+
+- **[x](#x)**, an engineering workflow that runs on every code change.
+  - **Skill:** `x:work`, which runs automatically.
+  - **Commands:** `/x:think`, `/x:audit`, `/x:optimizer`, `/x:architecture`, `/x:bug-hunter`, `/x:designer`, `/x:prototype`, `/x:security`, `/x:state-machine`, `/x:review`, `/x:deprecated`.
+  - **Agents:** Fable thinker, architect, optimizer, bug hunter, designer, prototyper and security; Opus auditor and state machine; Sonnet worker and reader; Haiku runner.
+  - **Hooks:** a guard for checkouts shared between sessions, and deprecated-API checks for Zig, TypeScript, Rust and Go.
+- **[usage-mod](#usage-mod)**, a band above the prompt: rings for your weekly and Fable usage limits, plus folder, branch, context and cost.
+
+  <img src="assets/usage-mod.png" alt="usage-mod: rings at 44% Week and 48% Fable, each resetting in 4d 23h, with the folder, branch and cost on the right, above the prompt" width="803">
 
 ```
 /plugin install x --marketplace xcaeser/xcaeser-plugins
+```
+
+```
+/plugin install usage-mod --marketplace xcaeser/xcaeser-plugins
 ```
 
 New versions arrive with `claude plugin update x@xcaeser`, or automatically once you enable auto-update for xcaeser in `/plugin` → Marketplaces.
@@ -33,13 +46,14 @@ The rest run only when you type them; `x:work` also runs the audit, optimizer, a
 | `/x:optimizer` | Hunt optimizations with Fable, each measured, pushing past the first win toward the floor; Sonnet agents prototype and Haiku agents measure. Read-only. `x:work` runs it when a change sits on a hot path. |
 | `/x:architecture` | Have Fable audit the architecture and its elegance with a firm opinion: a verdict of restructure or refine, then an in-depth report from the code, dependency graph and git history of what to reshape, simplify or cut. Read-only. `x:work` runs it before a change that moves a boundary or core data shape. |
 | `/x:bug-hunter` | Find the deepest, most annoying bug, reproduce it, and fix it and every reproduced runner-up through Sonnet workers. |
-| `/x:designer` | Have Fable review the rendered UI with a firm opinion: a verdict of revamp or polish, then an in-depth report of what to redesign or improve, with screenshots, measurements and mockups. Read-only. `x:work` runs it after a change that adds or reshapes UI. |
+| `/x:designer` | Have Fable review the rendered UI with a firm opinion: a verdict of revamp or polish, then an in-depth report of what to redesign or improve, with screenshots, measurements and mockups. It carries its own standards for flow, type, component craft, motion, gestures, mobile web and worst-case data, drawn from Apple's design talks and Emil Kowalski's design engineering, with your `CLAUDE.md` ranked above them. Read-only. `x:work` runs it after a change that adds or reshapes UI. |
+| `/x:prototype` | Explore one UI piece as three to five genuinely different versions behind a live picker: Fable picks the directions and verifies each at full size, Sonnet workers build one variant each, and you flip through them with the number keys and keep one, which `x:work` then integrates. Nothing in production changes until you keep it. |
 | `/x:security` | Have Fable attack your own app like a real attacker: map the attack surface, prove each vulnerability with a working exploit against a local instance, and fix every proven one at its root through Sonnet workers. Secrets to rotate come to you. |
 | `/x:state-machine` | Map every implicit state machine (states, transitions, writers, reachable impossible states) and fix the defects it reproduces through Sonnet workers. |
 | `/x:review` | Review the whole codebase at once: the architect, bug-hunter, security, optimizer, state-machine and designer agents run in parallel, report-only, and the auditor checks the existing code against your `CLAUDE.md`. Haiku runners gather the raw facts (dependency graph, tests, build, git history, scanner) once for all of them. You get one ranked list of findings and pick what gets fixed. Up to seven reviewers per run, five of them Fable. |
 | `/x:deprecated` | Find every deprecated API use in the repo with the hooks' checks, then fix them all. |
 
-Each command but `/x:review`, which runs the others' agents, is a thin wrapper around an agent that carries the whole behavior: `x:Fable-thinker` judges, `x:Fable-optimizer` optimizes, `x:Fable-bug-hunter` hunts and fixes bugs through workers, `x:Fable-architect` audits architecture and elegance, `x:Fable-designer` reviews the UI, `x:Fable-security` exploits and fixes vulnerabilities through workers, `x:Opus-state-machine` maps state machines and fixes through workers, `x:Opus-auditor` audits and fixes through workers, `x:Sonnet-worker` builds, including the architect's prototypes and the designer's mockups, `x:Sonnet-reader` reads the slices of code the reviewers fan out and returns evidence for them to judge, and `x:Haiku-runner` runs the commands, searches and scans the others only need to read. They need access to the Fable, Opus, Sonnet and Haiku models.
+Each command but `/x:review`, which runs the others' agents, is a thin wrapper around an agent that carries the whole behavior: `x:Fable-thinker` judges, `x:Fable-optimizer` optimizes, `x:Fable-bug-hunter` hunts and fixes bugs through workers, `x:Fable-architect` audits architecture and elegance, `x:Fable-designer` reviews the UI, `x:Fable-prototyper` explores UI directions through workers, `x:Fable-security` exploits and fixes vulnerabilities through workers, `x:Opus-state-machine` maps state machines and fixes through workers, `x:Opus-auditor` audits and fixes through workers, `x:Sonnet-worker` builds, including the architect's prototypes, the designer's mockups and the prototyper's variants, `x:Sonnet-reader` reads the slices of code the reviewers fan out and returns evidence for them to judge, and `x:Haiku-runner` runs the commands, searches and scans the others only need to read. They need access to the Fable, Opus, Sonnet and Haiku models.
 
 The auditor checks the work against your `CLAUDE.md`, so the rules you write there are the bar.
 
@@ -58,11 +72,7 @@ Each hook runs only for its own file type, uses the project's own version (its m
 
 ## usage-mod
 
-A band above the prompt: rings for your weekly and Fable usage limits, plus folder, branch, context and cost.
-
-```
-/plugin install usage-mod --marketplace xcaeser/xcaeser-plugins
-```
+A band above the prompt: rings for your weekly and Fable usage limits, plus folder, branch, context and cost. Each ring fills as you use the limit and shows the time left until it resets.
 
 ## License
 
