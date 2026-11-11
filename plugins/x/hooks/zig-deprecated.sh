@@ -13,7 +13,7 @@ input=$(cat)
 
 # File path, old text and new text, separated by the ASCII unit separator.
 sep=$(printf '\037')
-out=$(printf '%s' "$input" | /usr/bin/jq -r '.tool_input | [.file_path // "", .old_string // "", .new_string // .content // ""] | join("\u001f")') || exit 0
+out=$(printf '%s' "$input" | jq -r '.tool_input | [.file_path // "", .old_string // "", .new_string // .content // ""] | join("\u001f")') || exit 0
 file=${out%%"$sep"*}
 rest=${out#*"$sep"}
 old=${rest%%"$sep"*}
