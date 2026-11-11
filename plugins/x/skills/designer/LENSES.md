@@ -7,6 +7,7 @@ Read in full every file whose condition the UI meets. Judge rules carry ids, cit
 - Anything drags, swipes, flings or holds, or a sheet or drawer exists: `gestures.md`.
 - Motion is JS-driven, animates beyond `transform` and `opacity`, or plays while the page loads, navigates or fetches; or frames drop: `performance.md`.
 - A web app at phone size: `mobile-web.md`.
-- A React Native or Expo app: `native.md`.
+- A Swift app on iOS, iPadOS, watchOS or macOS, or a widget: `apple.md`.
+- A command-line tool: `terminal.md`.
 - A fix is a library, or hand-built UI duplicates one: `libraries.md`.
 - Naming an effect precisely: `vocabulary.md`.
