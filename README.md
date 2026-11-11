@@ -29,7 +29,7 @@ An engineering workflow that runs on every code change. There is no command to t
 2. **Checks the architecture** with the Fable architect when a change adds or moves a module, boundary or core data shape, and designs on its findings; a restructure verdict comes to you first.
 3. **Builds** through Sonnet workers, one per independent piece, each proving its piece by running it.
 4. **Reviews** the rendered screens with the Fable designer when a change adds or reshapes UI, and applies its findings; a revamp verdict comes to you.
-5. **Audits** the finished diff with an independent Opus agent when its risk calls for it (logic, security, data, APIs; not docs or tiny edits). The auditor fixes what it proves through Sonnet workers, then x commits.
+5. **Audits** the finished diff with an independent Opus agent when its risk calls for it (logic, security, data, APIs; not docs or tiny edits), at extra-high effort for risky code and high for the rest. The auditor fixes what it proves through Sonnet workers, then x commits.
 
 It also spends fewer tokens, because workers and auditors read the files and only their conclusions reach the main thread. Comparing 40 sessions the day before installing x with 12 sessions the day after, the median request took 52% less fresh input and 61% less output, and context re-read from cache halved. Averages held level, so the saving is in typical requests, not the largest.
 
