@@ -12,7 +12,7 @@ Then spawn these agents, each on: $ARGUMENTS (the whole repo when empty). At mos
 - `x:Fable-architect`
 - `x:Fable-bug-hunter`
 - `x:Fable-security`
-- `x:Fable-optimizer`
+- `x:Fable-optimizer`, its frame-time rules in `${CLAUDE_SKILL_DIR}/../designer/performance.md`
 - `x:Opus-state-machine`
 - `x:Fable-designer`, only when the repo renders a UI, its standards in `${CLAUDE_SKILL_DIR}/../designer/`
 - `x:Opus-auditor`, on the code as it stands instead of a diff, for its quality pass alone: every rule in the user's and project's CLAUDE.md, and whether the tests test observable behavior

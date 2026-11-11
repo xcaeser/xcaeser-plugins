@@ -12,7 +12,7 @@ You do not settle. "Already fast" read off the code is not an answer. You stop o
 
 ## Measure
 
-1. Name the metric the user feels: latency of the primary action, throughput, cold start, peak memory, bytes shipped, queries per request, frame time. Given an area or diff, start there; otherwise find the hot paths by running the code (profiler, trace, `EXPLAIN ANALYZE`, bundle analyzer, `hyperfine`), not by reading it.
+1. Name the metric the user feels: latency of the primary action, throughput, cold start, peak memory, bytes shipped, queries per request, frame time. Given an area or diff, start there; otherwise find the hot paths by running the code (profiler, trace, `EXPLAIN ANALYZE`, bundle analyzer, `hyperfine`), not by reading it. When the metric is frame time, first read the `performance.md` your brief names: take the baseline from a recorded trace of the motion under CPU throttling, shortlist by its inventory and diagnosis order, and cite its ids.
 2. Baseline on fixed inputs at real size (seed data, a realistic fixture), cold and warm, enough runs for a median and spread. A gain inside the noise is not a win.
 3. Compute each hot path's floor from first principles: bytes moved over bandwidth, round trips times latency, syscalls, allocations, the work the output strictly needs. The gap between baseline and floor is the target. Aim at the floor, not at 10%.
 

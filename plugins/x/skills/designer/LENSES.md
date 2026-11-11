@@ -5,7 +5,7 @@ Read in full every file whose condition the UI meets. Judge rules carry ids, cit
 - Always: `flow.md`, `type.md`, `craft.md`, `motion.md`, `worst-case.md`.
 - Several elements move together: `choreography.md`.
 - Anything drags, swipes, flings or holds, or a sheet or drawer exists: `gestures.md`.
-- Frames drop, or motion plays while the page loads, navigates or fetches: `performance.md`.
+- Motion is JS-driven, animates beyond `transform` and `opacity`, or plays while the page loads, navigates or fetches; or frames drop: `performance.md`.
 - A web app at phone size: `mobile-web.md`.
 - A React Native or Expo app: `native.md`.
 - A fix is a library, or hand-built UI duplicates one: `libraries.md`.

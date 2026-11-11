@@ -5,6 +5,6 @@ disable-model-invocation: true
 argument-hint: "[area, path, diff or metric to optimize]"
 ---
 
-Spawn the `x:Fable-optimizer` agent on: $ARGUMENTS
+Spawn the `x:Fable-optimizer` agent on: $ARGUMENTS. Tell it the frame-time rules are in `${CLAUDE_SKILL_DIR}/../designer/performance.md`.
 
 Relay its report in full. Its wins are applied through the `x:work` skill, or through workers when `x:work` ran it; its trade-offs go to the user.
