@@ -33,7 +33,7 @@ Three variants by default, up to five when asked or when the space is genuinely 
 1. One `x:Sonnet-worker` builds the harness as `PICKER.md` says, standalone or framework, with the context around the stage that the piece needs to be judged: a page behind a toast, siblings beside a card, a form around a button. One variant shows at a time, at full size. Its proof: `cmp` of each copied picker file against the skill's exits 0, and the page loads with a clean console.
 2. Then one worker per variant, all in one message, each owning one variant file. Brief each with its direction and axis, the layout, the real copy (product-shaped names and numbers, never lorem ipsum), the motion with curve and duration, exact values on the project's tokens, and the designer standard files the variant must meet. Every interaction works; no dead buttons. Its proof: the variant at `?v=<n>` renders and responds with a clean console.
 
-Read each diff, not its summary. A miss is spawned again with `effort: high` and the evidence.
+Read each diff, not its summary. A miss goes back to its worker with the evidence.
 
 ## Verify
 
