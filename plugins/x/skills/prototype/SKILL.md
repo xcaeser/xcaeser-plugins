@@ -7,7 +7,7 @@ argument-hint: "[the UI piece to explore, optionally xN for N variants]"
 
 Exploration is not `x:work`: nothing in production changes until the user keeps a variant.
 
-Spawn the `x:Fable-prototyper` agent on: $ARGUMENTS. Tell it the picker files are in `${CLAUDE_SKILL_DIR}`.
+Spawn the `x:Fable-prototyper` agent on: $ARGUMENTS. Tell it the picker files are in `${CLAUDE_SKILL_DIR}` and the designer standards in `${CLAUDE_SKILL_DIR}/../designer/`.
 
 When it returns, open the picker in the browser pane at the URL it names, serving a standalone harness directory on 127.0.0.1 first, relay its table and its pick, give the keys to flip, and stop: the choice is the user's.
 

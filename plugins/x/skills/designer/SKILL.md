@@ -5,6 +5,6 @@ disable-model-invocation: true
 argument-hint: "[screens, flow or area to review]"
 ---
 
-Spawn the `x:Fable-designer` agent on: $ARGUMENTS
+Spawn the `x:Fable-designer` agent on: $ARGUMENTS. Tell it its standards are in `${CLAUDE_SKILL_DIR}`.
 
 Relay its report in full and show the user the screenshots and mockups it returns. Its changes are built through the `x:work` skill once the user says which; its taste calls go to the user.

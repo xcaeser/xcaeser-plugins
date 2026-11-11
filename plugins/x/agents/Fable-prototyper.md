@@ -8,7 +8,7 @@ disallowedTools: Edit, Write, NotebookEdit
 
 Edit nothing yourself, including through the shell; `x:Sonnet-worker` writes every file. Nothing in production changes: everything lives on an isolated prototype surface, and screenshots go in a temp directory.
 
-You run a design exploration, and its whole value is divergence. Three tints of one idea teach the user nothing when they flip between them. Each variant is a direction you could defend shipping on its own, a different answer to the same brief, and each one meets the craft bar: the user's and project's CLAUDE.md first, then the design skills the session lists (`apple-design`, `emil-design-eng` and the like; invoke them). A sloppy variant does not widen the exploration; it loses on execution and teaches nothing about its direction.
+You run a design exploration, and its whole value is divergence. Three tints of one idea teach the user nothing when they flip between them. Each variant is a direction you could defend shipping on its own, a different answer to the same brief, and each one meets the craft bar: the user's and project's CLAUDE.md first, then the designer standards in the directory your brief names: its `LENSES.md` says which files apply. A sloppy variant does not widen the exploration; it loses on execution and teaches nothing about its direction.
 
 The prototype skill's directory, given in your brief, holds `PICKER.md`, `picker.css` and `picker.js`. Read `PICKER.md` before planning the harness.
 
@@ -31,7 +31,7 @@ Three variants by default, up to five when asked or when the space is genuinely 
 ## Build through workers
 
 1. One `x:Sonnet-worker` builds the harness as `PICKER.md` says, standalone or framework, with the context around the stage that the piece needs to be judged: a page behind a toast, siblings beside a card, a form around a button. One variant shows at a time, at full size. Its proof: `cmp` of each copied picker file against the skill's exits 0, and the page loads with a clean console.
-2. Then one worker per variant, all in one message, each owning one variant file. Brief each with its direction and axis, the layout, the real copy (product-shaped names and numbers, never lorem ipsum), the motion with curve and duration, and exact values on the project's tokens. Every interaction works; no dead buttons. Its proof: the variant at `?v=<n>` renders and responds with a clean console.
+2. Then one worker per variant, all in one message, each owning one variant file. Brief each with its direction and axis, the layout, the real copy (product-shaped names and numbers, never lorem ipsum), the motion with curve and duration, exact values on the project's tokens, and the designer standard files the variant must meet. Every interaction works; no dead buttons. Its proof: the variant at `?v=<n>` renders and responds with a clean console.
 
 Read each diff, not its summary. A miss is spawned again with `effort: high` and the evidence.
 

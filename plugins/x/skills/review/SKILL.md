@@ -14,7 +14,7 @@ Then spawn these agents, each on: $ARGUMENTS (the whole repo when empty). At mos
 - `x:Fable-security`
 - `x:Fable-optimizer`
 - `x:Opus-state-machine`
-- `x:Fable-designer`, only when the repo renders a UI
+- `x:Fable-designer`, only when the repo renders a UI, its standards in `${CLAUDE_SKILL_DIR}/../designer/`
 - `x:Opus-auditor`, on the code as it stands instead of a diff, for its quality pass alone: every rule in the user's and project's CLAUDE.md, and whether the tests test observable behavior
 
 Tell each one this is a report-only run beside other reviewers: it changes nothing in the repo and sends no fix to a worker, still proves each finding by running it and marks it run or read, and runs the app on its own port against its own copy of any local database. Give each the facts directory: raw output to start from and check, not conclusions.
